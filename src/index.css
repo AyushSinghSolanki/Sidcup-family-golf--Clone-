@@ -15,7 +15,7 @@ body {
     }
      
     .header-button {
-        @apply px-6 py-2 bg-transparent border-2 border-green-700 text-white rounded-full hover:bg-black hover:text-black transition-all duration-300;
+        @apply px-6 py-2 bg-transparent border-2 border-green-700 text-white rounded-full hover:bg-black hover:text-white transition-all duration-300;
     }
    .hero-overlay{
     @apply absolute inset-0 bg-linear-to-b from-transparent via-black/20 to-black;

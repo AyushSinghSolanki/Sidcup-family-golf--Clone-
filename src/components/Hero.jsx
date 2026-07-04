@@ -1,6 +1,27 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import assets from "../assets";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+
+
 const Hero = () => {
+
+   const overlayRef = useRef();
+   useEffect(() => {
+    gsap.to(overlayRef.current, {
+      backgroundColor: "#000",
+      scrollTrigger: {
+        trigger: overlayRef.current,
+        scrub: .5,
+        start: "top top",
+        end : "+=500",
+      },
+    });
+   }, []);
+
   return (
     <>
       <section>
@@ -15,7 +36,7 @@ const Hero = () => {
             <source src={assets.video} type="video/mp4" />
           </video>
 
-          <div className="fixed bg-black/40 z-0 inset-0 hero-overlay" />
+          <div ref={overlayRef} className="fixed bg-black/40 z-0 inset-0 hero-overlay" />
 
           {/* Content Container */}
           <div className="relative z-10 w-full flex gap-2  flex-col h-screen items-center justify-center text-white">
