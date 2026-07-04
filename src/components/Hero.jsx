@@ -5,60 +5,63 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-
-
 const Hero = () => {
+  const overlayRef = useRef();
 
-   const overlayRef = useRef();
-   useEffect(() => {
+  useEffect(() => {
     gsap.to(overlayRef.current, {
       backgroundColor: "#000",
       scrollTrigger: {
         trigger: overlayRef.current,
-        scrub: .5,
+        scrub: 0.5,
         start: "top top",
-        end : "+=500",
+        end: "+=500",
       },
     });
-   }, []);
+  }, []);
 
   return (
-    <>
-      <section>
-        <div>
-          <video
-            muted
-            autoPlay
-            loop
-            playsInline
-            className="fixed inset-0 -z-10 w-full h-screen object-cover"
-          >
-            <source src={assets.video} type="video/mp4" />
-          </video>
+    <section>
+      <div>
+        {/* VIDEO BACKGROUND (UNCHANGED) */}
+        <video
+          muted
+          autoPlay
+          loop
+          playsInline
+          className="fixed inset-0 -z-10 w-full h-screen object-cover"
+        >
+          <source src={assets.video} type="video/mp4" />
+        </video>
 
-          <div ref={overlayRef} className="fixed bg-black/40 z-0 inset-0 hero-overlay" />
+        {/* OVERLAY (UNCHANGED) */}
+        <div
+          ref={overlayRef}
+          className="fixed bg-black/40 z-0 inset-0 hero-overlay"
+        />
 
-          {/* Content Container */}
-          <div className="relative z-10 w-full flex gap-2  flex-col h-screen items-center justify-center text-white">
-            <h1 className="hero-text">
-              <span className="hero-text-span">Eat. Drink. Play.</span>
-              Eat. Drink. Play.
-            </h1>
+        {/* CONTENT */}
+        <div className="relative z-10 w-full flex flex-col gap-2 h-screen items-center justify-center text-white px-4 text-center">
+          {/* HERO TEXT */}
+          <h1 className="hero-text text-center leading-none mx-auto flex flex-col items-center justify-center">
+            <span className="hero-text-span block">Eat. Drink. Play.</span>
+            <span className="block">Eat. Drink. Play.</span>
+          </h1>
 
-            <h3 className=" text-4xl font-bold text-center uppercase mb-4">
-              Welcome to Sidcup Family Golf
-            </h3>
+          {/* SUBTITLE */}
+          <h3 className="text-xl md:text-4xl font-bold text-center uppercase mb-4 mx-auto">
+            Welcome to Sidcup Family Golf
+          </h3>
 
-            <p className="text-lg uppercase text-center w-[40%]">
-              Welcome to Sidcup Family Golf Sidcup Family Golf is a Toptracer
-              golf venue in Sidcup, South East London. Passionate about
-              technology, player development and making golf fun and accessible
-              to everyone.
-            </p>
-          </div>
+          {/* PARAGRAPH */}
+          <p className="text-sm font-medium md:text-lg uppercase text-center w-full md:w-[40%] mx-auto">
+            Welcome to Sidcup Family Golf Sidcup Family Golf is a Toptracer golf
+            venue in Sidcup, South East London. Passionate about technology,
+            player development and making golf fun and accessible to everyone.
+          </p>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 

@@ -69,7 +69,7 @@ const MouseFollower = () => {
           width: "800px",
           height: "300px",
           borderRadius: "50%",
-          animationDelay: "5s",
+          animationDelay: "s",
           background:
             "radial-gradient(circle at center, rgba(132,255,80,0.35) 0%, rgba(72,255,0,0.18) 35%, rgba(72,255,0,0.08) 60%, transparent 75%)",
           filter: "blur(90px)",

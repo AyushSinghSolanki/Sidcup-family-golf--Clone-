@@ -9,21 +9,110 @@ body {
     -webkit-text-stroke: 1px white;
 }
 
+
 @layer components {
-    .header {
-        @apply px-30 py-10 bg-transparent text-white z-50 fixed inset-x-0;
-    }
-     
-    .header-button {
-        @apply px-6 py-2 bg-transparent border-2 border-green-700 text-white rounded-full hover:bg-black hover:text-white transition-all duration-300;
-    }
-   .hero-overlay{
-    @apply absolute inset-0 bg-linear-to-b from-transparent via-black/20 to-black;
+
+    /* ---------------- Header ---------------- */
+    .cta-button {
+    @apply px-6 py-2 rounded-full border-2 border-black bg-black text-white font-bold uppercase transition-all duration-300;
 }
+
+.cta-button:hover {
+    @apply bg-transparent text-black;
+}
+
+    .header {
+        @apply px-30 py-10 bg-transparent text-white fixed inset-x-0 z-50;
+    }
+
+    .header-button {
+        @apply px-6 py-2 border-2 border-green-700 rounded-full text-white bg-transparent transition-all duration-300 hover:bg-black hover:text-white;
+    }
+
+    /* ---------------- Hero ---------------- */
+
+    .hero-overlay {
+        @apply absolute inset-0 bg-linear-to-b from-transparent via-black/20 to-black;
+    }
+
     .hero-text {
-        @apply relative text-white text-[180px] font-bold;
+        @apply relative text-[180px] font-bold text-white;
     }
+
     .hero-text-span {
-        @apply absolute -top-1 -left-1 -z-10 text-black [text-shadow:1px_1px_0_#fff];
+        @apply absolute -top-1 -left-1 -z-10 text-black;
+        text-shadow: 1px 1px 0 #fff;
     }
+
+    /* ---------------- Marquee ---------------- */
+
+    .marquee-title {
+        @apply mx-10 text-[110px] font-black uppercase whitespace-nowrap transition-all duration-300 cursor-pointer;
+
+        color: transparent;
+        -webkit-text-stroke: 2px white;
+    }
+
+    .marquee-title:hover {
+        color: #95c11e;
+        -webkit-text-stroke: 2px #95c11e;
+        transform: scale(1.05);
+    }
+
+    /* ---------------- Cards ---------------- */
+
+    .card-main {
+        @apply relative z-40 flex min-h-screen flex-wrap items-center justify-center gap-10;
+    }
+
+    .card {
+        @apply relative w-80 h-105 overflow-hidden rounded-2xl cursor-pointer;
+
+        transform-style: preserve-3d;
+        will-change: transform;
+        transition: box-shadow .4s;
+    }
+
+    .card-img {
+        @apply h-full w-full rounded-2xl object-cover transition-all duration-500;
+    }
+
+    .card-text {
+        @apply absolute bottom-8 left-8 z-20 text-3xl font-black uppercase tracking-wider text-white transition-all duration-500;
+    }
+
+    .card-overlay {
+        @apply absolute inset-0 z-30 flex flex-col justify-center bg-lime-400 p-8;
+
+        clip-path: inset(100% 0 0 0);
+        transition: clip-path .6s cubic-bezier(.19,1,.22,1);
+    }
+
+    .card-overlay-title {
+        @apply mb-4 text-3xl font-black uppercase text-black;
+    }
+
+    .card-overlay-sub {
+        @apply text-base leading-7 text-black;
+    }
+
+    .card:hover .card-overlay {
+        clip-path: inset(0 0 0 0);
+    }
+
+    .card:hover .card-img {
+        transform: scale(1.08);
+    }
+
+    .card:hover .card-text {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    .card:hover {
+        box-shadow:
+            0 30px 80px rgba(0,0,0,.45),
+            0 0 80px rgba(170,255,0,.18);
+    }
+    
 }
